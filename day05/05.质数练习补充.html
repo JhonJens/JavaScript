@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 *	打印出1-100之间所有的质数 
+			 */
+
+			//测试如下的程序的性能
+			// 在程序执行前,开启计时器
+			// console.time("计时器名字")可以用来开启一个计时器
+			// 他需要一个字符串作为参数,这个字符串将会作为计时器标识
+			console.time("test");
+
+			// 打印2-100之间所有的数
+			for (var i = 2; i <= 10000; i++) {
+
+				// 创建一个布尔值,来保存结果,i是质数
+				var flag = true;
+
+				// 判断i是否是质数
+				// 获取2-i之间所有的数
+				for (var j = 2; j <= Math.sqrt(i); j++) {
+
+					// 判断i是否能被就j整除
+					if (i % j == 0) {
+						// 如果进入判断则证明i不是质数,修改flag值为false
+						flag = false;
+
+						// 一旦进入了判断,则证明i不可能是质数,此时循环在执行就没有任何意义了
+						// 使用break来结束循环
+						break;
+						
+						// 不加break 219.368ms
+						// 加break 28.395ms
+						// 修改 j <= Math.sqrt(i) 2.434ms
+					}
+				}
+
+				// 如果是质数则打印i的值
+				if (flag) {
+					// console.log(i);
+				}
+			}
+
+			// 终止计时器
+			// console.timeEnd()用来停止一个计时器,需要一个计时器的名字作为参数
+			console.timeEnd("test");
+
+			/* 
+			 *	36
+			 * 	1 36
+			 *	2 18
+			 *	3 12
+			 *  4 9
+			 *  6 6
+			 */
+			
+			// 可以通过Math.sqrt()对一个数进行开方
+			var result = Math.sqrt(97);
+			
+			// console.log("result = "+result);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
